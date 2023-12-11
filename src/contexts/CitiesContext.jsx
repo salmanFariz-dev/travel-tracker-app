@@ -68,7 +68,7 @@ function CitiesProvider({ children }) {
       }
     }
     fetchCities();
-  }, [dispatch]);
+  }, []);
 
   //fetching the individual city details
   const getCity = useCallback(async (id) => {
