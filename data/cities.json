@@ -35,30 +35,6 @@
         "lng": "76.24254226684572"
       },
       "id": 98443201
-    },
-    {
-      "cityName": "Borriol",
-      "country": "Spain",
-      "emoji": "🇪🇸",
-      "date": "2023-12-02T11:29:31.650Z",
-      "notes": "fsdfsd",
-      "position": {
-        "lat": "40.0314262953692",
-        "lng": "-0.05922317504882813"
-      },
-      "id": 98443202
-    },
-    {
-      "cityName": "Cortes de Arenoso",
-      "country": "Spain",
-      "emoji": "🇪🇸",
-      "date": "2023-12-02T13:40:08.595Z",
-      "notes": "kjyugfyu",
-      "position": {
-        "lat": "40.16182100599226",
-        "lng": "-0.5273437500000001"
-      },
-      "id": 98443203
     }
   ]
 }

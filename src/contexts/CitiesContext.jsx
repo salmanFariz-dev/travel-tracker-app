@@ -1,4 +1,4 @@
-import { useReducer } from "react";
+import { useCallback, useReducer } from "react";
 import { createContext,  useEffect, useContext } from "react";
 
 const URL = "http://localhost:8000";
@@ -55,7 +55,6 @@ function CitiesProvider({ children }) {
   //fetching the cities data, need to be fechted intially(on mount), thats why its put on useEffect
   useEffect(function () {
     async function fetchCities() {
-      console.log("fetching cities...")
       dispatch({ type: "loading" });
       try {
         const res = await fetch(`${URL}/cities`);
@@ -69,10 +68,12 @@ function CitiesProvider({ children }) {
       }
     }
     fetchCities();
-  }, []);
+  }, [dispatch]);
 
   //fetching the individual city details
-  async function getCity(id) {
+  const getCity = useCallback(async (id) => {
+    if(Number(id) === currentCity.id) return
+
     dispatch({ type: "loading" });
     try {
       const res = await fetch(`${URL}/cities/${id}`);
@@ -81,7 +82,7 @@ function CitiesProvider({ children }) {
     } catch {
       dispatch({ type: "rejected", payload: "the is an error to fetch city" });
     }
-  }
+  },[currentCity.id])
 
   //creating new city
   async function createCity(newCity) {

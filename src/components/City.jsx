@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import styles from "./City.module.css";
-import { useEffect } from "react";
+import {  useEffect } from "react";
 import Spinner from "./Spinner";
 import { useCities } from "../contexts/CitiesContext";
 import BackButton from "./BackButton";
@@ -19,9 +19,10 @@ function City() {
   const { cityName, emoji, date, notes } = currentCity;
 
 
+
   useEffect(()=>{
     getCity(id)
-  },[id]) 
+  },[id,getCity]) 
 
   if(isLoading) return <Spinner />
 
