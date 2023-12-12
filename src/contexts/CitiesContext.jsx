@@ -48,10 +48,6 @@ function CitiesProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, intialState);
   const { cities, isLoading, currentCity } = state;
 
-  // const [cities, setCities] = useState([]);
-  // const [isLoading, setIsLoading] = useState(false);
-  // const [currentCity,setCurrentCity] = useState("");
-
   //fetching the cities data, need to be fechted intially(on mount), thats why its put on useEffect
   useEffect(function () {
     async function fetchCities() {
@@ -69,8 +65,11 @@ function CitiesProvider({ children }) {
     }
     fetchCities();
   }, []);
+  //----->
 
   //fetching the individual city details
+  /*useCallback for avoid re-creating in every render, this useful for in the city page.
+  when adding this getCity function in dependency array of useEffect */
   const getCity = useCallback(async (id) => {
     if(Number(id) === currentCity.id) return
 
@@ -83,6 +82,7 @@ function CitiesProvider({ children }) {
       dispatch({ type: "rejected", payload: "the is an error to fetch city" });
     }
   },[currentCity.id])
+  //------>
 
   //creating new city
   async function createCity(newCity) {
@@ -102,6 +102,7 @@ function CitiesProvider({ children }) {
       dispatch({ type: "rejected", payload: "the is an error to create city" });
     }
   }
+  //------>
 
   //deleting the city
   async function deleteCity(id) {
@@ -113,6 +114,7 @@ function CitiesProvider({ children }) {
       dispatch({ type: "rejected", payload: "the is an error to delete city" });
     }
   }
+ //-------->
 
   return (
     <CitiesContext.Provider

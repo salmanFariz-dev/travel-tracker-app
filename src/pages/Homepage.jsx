@@ -4,7 +4,10 @@ import PageNav from "../components/PageNav";
 import { useAuth } from "../contexts/FakeAuthContext";
 
 export default function Homepage() {
+  
+  //context auth
   const {isAuthenticated} = useAuth()
+
   return (
     <main className={styles.homepage}>
       <PageNav />

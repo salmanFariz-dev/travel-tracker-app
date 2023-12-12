@@ -14,12 +14,14 @@ const formatDate = (date) =>
   }).format(new Date(date));
 
 function City() {
+  //getting selected city's id
   const {id} = useParams()
+  
+  //context cities
   const {currentCity, getCity, isLoading} = useCities()
   const { cityName, emoji, date, notes } = currentCity;
 
-
-
+  //effect for getting city detail
   useEffect(()=>{
     getCity(id)
   },[id,getCity]) 

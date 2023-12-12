@@ -11,9 +11,9 @@ const formatDate = (date) =>
 
 function CityItem({ city }) {
   const { cityName, emoji, date, id, position } = city;
+  //context cities
   const {currentCity,deleteCity} = useCities()
   
-
   function handleDeleteClick(e){
     e.preventDefault()
     deleteCity(id)  

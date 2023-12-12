@@ -4,7 +4,6 @@ import styles from "./AppLayout.module.css";
 import User from "../components/User";
 
 function AppLayout() {
-  //context auth
   return (
     <div className={styles.app}>
       <Sidebar />

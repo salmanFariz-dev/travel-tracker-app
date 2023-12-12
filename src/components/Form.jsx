@@ -34,13 +34,14 @@ function Form() {
   const [notes, setNotes] = useState("");
   const navigate = useNavigate()
 
-  //context api
+  //context citites
   const  {isLoading,createCity} = useCities();
 
   const [geocodingError, setGeocodingError] = useState(false);
   const [isLoadingGeocoding, setIsLoadingGeocoding] = useState(false);
   const [emoji, setEmoji] = useState();
 
+  //effect for fetching city data when user click on map
   useEffect(() => {
     if (!lat && !lng) return;
     async function fetchCityData() {
@@ -64,12 +65,14 @@ function Form() {
     }
     fetchCityData();
   }, [lat, lng]);
+  //----->
 
   if (isLoadingGeocoding) return <Spinner />;
   if (!lat && !lng)
     return <Message message="start by clicking somewhere on the map" />;
   if (geocodingError) return <Message message={geocodingError} />;
 
+  //handle functin for adding city to list
   async function handleSubmit(e) {
     e.preventDefault();
     const newCity = {
@@ -84,6 +87,7 @@ function Form() {
     await createCity(newCity)
     navigate("/app/cities")
   }
+  //------>
 
   return (
     <form className={`${styles.form} ${isLoading ? styles.loading : ""} `} onSubmit={handleSubmit}>

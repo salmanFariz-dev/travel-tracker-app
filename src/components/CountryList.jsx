@@ -13,6 +13,7 @@ function CountryList() {
   if (isLoading) return <Spinner />;
   if (!cities.length) return <Message message={messsage} />;
 
+  //reduce fn for getting the countries from the city list 
   const countries = cities.reduce((arr, city) => {
     if (!arr.map((el) => el.country).includes(city.country))
       return [...arr, { country: city.country, emoji: city.emoji }];

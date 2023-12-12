@@ -7,7 +7,7 @@ import {  useCities } from '../contexts/CitiesContext'
 const messsage = "add yout first city by pointing on the map"
 
 function CityList() {   
- 
+    //context cities
     const {cities,isLoading} = useCities()
 
     if(isLoading) return <Spinner />

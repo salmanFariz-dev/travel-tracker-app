@@ -6,17 +6,17 @@ import { useEffect, useState } from "react";
 import Button from "../components/Button";
 
 export default function Login() {
-  // PRE-FILL FOR DEV PURPOSES
+  
   const [email, setEmail] = useState("jack@example.com");
   const [password, setPassword] = useState("qwerty");
 
-  //context
+  //context auth
   const { login, isAuthenticated } = useAuth();
 
   //navigate
   const navigate = useNavigate();
 
-  //effects
+  //effect for checking whether the user is auth or not.
   useEffect(() => {
     if (isAuthenticated === true) navigate("/app",{replace : true});
   }, [isAuthenticated, navigate]);
